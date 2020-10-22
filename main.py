@@ -10,6 +10,10 @@ Faker.seed(0)
 adquirentes = ['Rede','Global']
 bandeiras = ['Mastercard','Visa','Hiper','Elo']
 naturezas = ['credito','debito','parcelado']
+clientes = []
+
+for i in range(3000):
+    clientes.append(fake.random_int())
 
 taxa_mdr_debito = 1/100
 taxa_mdr_credito = 1.99/100
@@ -132,7 +136,8 @@ class randomTran:
         tran.numUnico = str(uuid.uuid1())
         tran.nsu = str(fake.random_int(1000, 100000)) + str(fake.random_int(1000, 100000)) + str(fake.random_int(1000, 100000))
 
-        tran.cnpj= fake.random_int()
+        tran.cnpj = clientes[fake.random_int(0, len(clientes)- 1)]
+
 
         tran.adquirente= adquirentes[fake.random_int(0, len(adquirentes)-1 )]
         tran.natureza = naturezas[fake.random_int(0, len(naturezas)-1 )]
